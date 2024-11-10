@@ -1,0 +1,82 @@
+.bg-dark {
+  background-color: #5D4037!important; /* Gold color */
+}
+
+.navbar .navbar-brand, .navbar .nav-link, .navbar .btn {
+  color: #333 !important; /* Change text and icon color to dark for contrast */
+}
+
+.navbar .nav-link:hover, .navbar .nav-link.active {
+  color: #000 !important; /* Darker shade on hover */
+}
+/* Center the main cart container */
+.cart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px; /* Adjust the top margin as needed */
+  }
+  
+  .cart-card {
+    width: 50%; /* Control the width of the cart card */
+    margin: 25px;
+    padding: 25px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Additional styling as previously defined */
+  .center {
+    text-align: center;
+    padding: 40px;
+  }
+  
+  .center img {
+    height: 150px;
+    width: 150px;
+    margin: 20px 0;
+  }
+  
+  .table {
+    font-size: 14px;
+  }
+  
+  .table th, .table td {
+    padding: 10px;
+    vertical-align: middle;
+  }
+  
+  .table img {
+    width: 80px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .total-row {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 15px;
+    font-size: 16px;
+  }
+  
+  .btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  
+  .clear-cart-btn {
+    margin-top: 15px;
+  }
+  
+  .grand-total-text {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: right;
+    color: #333;
+  }
+  
+  
+  
