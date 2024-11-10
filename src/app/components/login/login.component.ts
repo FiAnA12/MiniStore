@@ -31,4 +31,7 @@ export class LoginComponent {
       }
     );
   }
+  goBack() {
+    this.router.navigate(['/']); // Navigate back to the homepage or previous page
+  }
 }
