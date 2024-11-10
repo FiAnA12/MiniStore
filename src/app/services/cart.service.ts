@@ -12,7 +12,7 @@ export class CartService {
   private totalPrice: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   constructor(private authService: AuthService) {
-    const initialCart = this.isBrowser() && this.authService.getIsAuthenticated()
+    const initialCart = this.authService.getIsAuthenticated()
       ? this.loadCartFromStorage()
       : this.loadCartFromSessionStorage();
     this.cartItems.next(initialCart);
@@ -51,12 +51,10 @@ export class CartService {
   private updateCart(items: Product[]): void {
     this.cartItems.next(items);
     this.calculateTotal();
-    if (this.isBrowser()) {
-      if (this.authService.getIsAuthenticated()) {
-        this.saveCartToStorage(items);
-      } else {
-        this.saveCartToSessionStorage(items);
-      }
+    if (this.authService.getIsAuthenticated()) {
+      this.saveCartToStorage(items);
+    } else {
+      this.saveCartToSessionStorage(items);
     }
   }
 
@@ -70,34 +68,20 @@ export class CartService {
   }
 
   private saveCartToStorage(items: Product[]): void {
-    if (this.isBrowser()) {
-      localStorage.setItem('cartItems', JSON.stringify(items));
-    }
+    localStorage.setItem('cartItems', JSON.stringify(items));
   }
 
   private loadCartFromStorage(): Product[] {
-    if (this.isBrowser()) {
-      const storedCart = localStorage.getItem('cartItems');
-      return storedCart ? JSON.parse(storedCart) : [];
-    }
-    return [];
+    const storedCart = localStorage.getItem('cartItems');
+    return storedCart ? JSON.parse(storedCart) : [];
   }
 
   private saveCartToSessionStorage(items: Product[]): void {
-    if (this.isBrowser()) {
-      sessionStorage.setItem('guestCartItems', JSON.stringify(items));
-    }
+    sessionStorage.setItem('guestCartItems', JSON.stringify(items));
   }
 
   private loadCartFromSessionStorage(): Product[] {
-    if (this.isBrowser()) {
-      const storedCart = sessionStorage.getItem('guestCartItems');
-      return storedCart ? JSON.parse(storedCart) : [];
-    }
-    return [];
+    const storedCart = sessionStorage.getItem('guestCartItems');
+    return storedCart ? JSON.parse(storedCart) : [];
   }
-
-  private isBrowser(): boolean {
-    return typeof window !== 'undefined' && typeof sessionStorage !== 'undefined' && typeof localStorage !== 'undefined';
-  }  
-} 
+}
